@@ -4,21 +4,11 @@ import {
   View,
   StatusBar
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import  {Button, FormInput, FormLabel, CheckBox}  from 'react-native-elements';
+import { onSignIn } from "../services/Auth";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      checked: true
-    };
-  }
-
-  render() {
-    return (
-      <View>
+export default ({ navigation }) => (
+      <View style={stylesTela.container}>
         <StatusBar
           backgroundColor="#438496"
           barStyle="light-content"
@@ -29,6 +19,8 @@ class Login extends Component {
           inputStyle={styles.inputText}
           underlineColorAndroid="transparent"
           placeholderTextColor={styles.placeholderCor}
+          autoCorrect={false}
+          keyboardType="email-address"
           placeholder="Digite seu e-mail ou login." />
         <FormLabel labelStyle={styles.labels} >Senha</FormLabel>
         <FormInput 
@@ -36,6 +28,8 @@ class Login extends Component {
           inputStyle={styles.inputText}
           underlineColorAndroid="transparent"
           placeholderTextColor={styles.placeholderCor}
+          secureTextEntry= {true}
+          autoCorrect={false}
           placeholder="Digite sua senha."/>
         <CheckBox
             center
@@ -44,20 +38,21 @@ class Login extends Component {
             uncheckedColor= "#FFFFFF"
             containerStyle={styles.checkbox}
             textStyle={styles.checkboxText}
-            checked={this.state.checked}
-            onPress={() => this.setState({ checked: !this.state.checked })}
+            //checked={this.state.checked}
+            //onPress={() => this.setState({ checked: !this.state.checked })}
             />
           <View style={{marginTop:10}}>
             <Button
-              raised
               title='Entrar' 
               backgroundColor="#CD5360"
-              fontFamily="Roboto"/>
+              fontFamily="Roboto"
+              onPress={() => {
+                onSignIn().then(() => navigation.navigate("SignedIn"));
+              }}
+              />
           </View>
       </View>
     );
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -101,4 +96,22 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+const stylesTela = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    backgroundColor:'#286DA8' //'#F5FCFF'
+  },
+  welcome: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    margin: 10,
+    color:'#FFFF',
+    fontFamily: "Roboto"
+  }
+});
+
+
+//export default Login;
