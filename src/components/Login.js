@@ -7,7 +7,67 @@ import {
 import  {Button, FormInput, FormLabel, CheckBox}  from 'react-native-elements';
 import { onSignIn } from "../services/Auth";
 
-export default ({ navigation }) => (
+
+class Login extends Component {
+  state = {
+    checked: false,
+  };
+
+  signedIn = () => {
+    this.props.navigation.navigate('SignedIn');
+  };
+
+  render(){
+    return(
+      <View style={stylesTela.container}>
+        <StatusBar
+          backgroundColor="#438496"
+          barStyle="light-content"
+        />
+        <FormLabel labelStyle={styles.labels} >Login</FormLabel>
+        <FormInput 
+          containerStyle={styles.inputContainers} 
+          inputStyle={styles.inputText}
+          underlineColorAndroid="transparent"
+          placeholderTextColor={styles.placeholderCor}
+          autoCorrect={false}
+          keyboardType="email-address"
+          placeholder="Digite seu e-mail ou login." />
+        <FormLabel labelStyle={styles.labels} >Senha</FormLabel>
+        <FormInput 
+          containerStyle={styles.inputContainers} 
+          inputStyle={styles.inputText}
+          underlineColorAndroid="transparent"
+          placeholderTextColor={styles.placeholderCor}
+          secureTextEntry= {true}
+          autoCorrect={false}
+          placeholder="Digite sua senha."/>
+        <CheckBox
+            center
+            title='Manter Conectado'
+            checkedColor= "#FFFFFF"
+            uncheckedColor= "#FFFFFF"
+            containerStyle={styles.checkbox}
+            textStyle={styles.checkboxText}
+            checked={this.state.checked}
+            onPress={() => this.setState({ checked: !this.state.checked })}
+            />
+          <View style={{marginTop:10}}>
+            <Button
+              title='Entrar' 
+              backgroundColor="#CD5360"
+              fontFamily="Roboto"
+              onPress={() => {
+                onSignIn().then(() => this.signedIn());
+              }}
+              />
+          </View>
+      </View>
+    );
+  }
+}
+
+/*export default ({ navigation }) => (
       <View style={stylesTela.container}>
         <StatusBar
           backgroundColor="#438496"
@@ -52,7 +112,7 @@ export default ({ navigation }) => (
               />
           </View>
       </View>
-    );
+    );*/
 
 const styles = StyleSheet.create({
   container: {
@@ -114,4 +174,4 @@ const stylesTela = StyleSheet.create({
 });
 
 
-//export default Login;
+export default Login;

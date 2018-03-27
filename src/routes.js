@@ -1,7 +1,12 @@
+import  React  from "React";
 import { StackNavigator } from 'react-navigation';
+
+import { Button } from "react-native-elements";
 
 import Login from './components/Login';
 import Logged from './components/Logged';
+import Perfil from './components/Perfil';
+
 
 export const SignedOutRoutes = StackNavigator({
         Login: {
@@ -15,13 +20,17 @@ export const SignedOutRoutes = StackNavigator({
 },
 {headerMode: 'none'});
 
+
 export const SignedInRoutes = StackNavigator({
         Logged: {
-            screen: Logged,
-            navigationOptions: {
-                title: "Meu Perfil" 
-            }
+            screen: Logged
         },
+        Perfil: {
+          screen: Perfil,
+          navigationOptions: {
+              title: "Meu Perfil"
+          }
+        }
 });
 
 

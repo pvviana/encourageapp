@@ -50,23 +50,6 @@ export default class App extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor:'#286DA8' //'#F5FCFF'
-  },
-  welcome: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    margin: 10,
-    color:'#FFFF',
-    fontFamily: "Roboto"
-  }
-});
-
 
 /*
 <View style={styles.container}>
