@@ -6,6 +6,7 @@ import { Button } from "react-native-elements";
 import Login from './components/Login';
 import Logged from './components/Logged';
 import Perfil from './components/Perfil';
+import FormLista from './components/FormLista';
 
 
 export const SignedOutRoutes = StackNavigator({
@@ -29,6 +30,12 @@ export const SignedInRoutes = StackNavigator({
           screen: Perfil,
           navigationOptions: {
               title: "Meu Perfil"
+          }
+        },
+        FormLista: {
+          screen: FormLista,
+          navigationOptions: {
+            title: "Adicionar Lista de Tarefas"
           }
         }
 });
