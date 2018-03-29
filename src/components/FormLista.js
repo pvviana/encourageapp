@@ -2,7 +2,6 @@ import React,{Component } from "react";
 import { View,StyleSheet } from "react-native";
 import { Card, Button, Text,FormInput,FormLabel,FormValidationMessage } from "react-native-elements";
 import { onSignOut, onSignIn } from "../services/Auth";
-import { salvarTarefa, recuperarTarefa } from '../services/ListaServico';
 
  class FormLista extends Component {
     constructor(props) {
@@ -24,14 +23,6 @@ import { salvarTarefa, recuperarTarefa } from '../services/ListaServico';
     //this.props.navigation.setParams({ paraPerfil: this.paraPerfil });
   }
 
-  salvarTarefa = (value) => {
-    salvarTarefa(value);
-  };
-
-  recuperarTarefa = () => {
-    recuperarTarefa();
-  };
-
    render(){
      return(
       <View style={stylesTela.container}>  
@@ -45,13 +36,7 @@ import { salvarTarefa, recuperarTarefa } from '../services/ListaServico';
                 large
                 backgroundColor="#03A9F4"
                 title="Adicionar"
-                onPress={() => this.salvarTarefa(this.state.myKey) }
-                />
-                <Button
-                onPress={this.recuperarTarefa.bind(this)}
-                title="Get Key"
-                color="#2196f3"
-                accessibilityLabel="Get Key"
+                //onPress={() => }
                 />
                 <Text>
                     Stored key is = {this.state.myKey}
